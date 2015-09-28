@@ -27,6 +27,32 @@ def shortBubbleSort(alist):
         passnum = passnum - 1
 
 
+def selectSort1(alist):
+    for slot in range(len(alist) - 1, 0, -1):
+        posMax = 0
+        for pos in range(1,slot + 1):
+            if alist[pos] > alist[posMax]:
+                posMax = pos
+
+        temp = alist[slot]
+        alist[slot] = alist[posMax]
+        alist[posMax] = temp
+
+def insertSort(alist):
+    for index in range(1, len(alist)):
+        currvalue = alist[index]
+        position = index
+
+        while position > 0 and alist[position - 1] > currvalue:
+            alist[position] = alist[position - 1]
+            position = position - 1
+
+        alist[position] = currvalue
+
+
+
+
+
 if __name__ == '__main__':
     alist = [1,2,3,4,5,6]
     bubbleSort(alist)
@@ -34,4 +60,12 @@ if __name__ == '__main__':
 
     alist = [1,2,3,4,5,6]
     shortBubbleSort(alist)
+    print alist
+
+    alist = [2,3,4,1,6,7]
+    selectSort1(alist)
+    print alist
+
+    alist = [10,2,9,3,4,6,5]
+    insertSort(alist)
     print alist
